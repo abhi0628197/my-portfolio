@@ -1,9 +1,9 @@
-name: Deploy Vite Portfolio to GitHub Pages
+name: Deploy Vite Portfolio
 
 on:
   push:
     branches: [main]
-  
+
 permissions:
   contents: read
   pages: write
@@ -14,18 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup Node
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          
+
       - name: Install dependencies
-        run: npm install
-          
+        run: npm ci
+
       - name: Build
         run: npm run build
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
